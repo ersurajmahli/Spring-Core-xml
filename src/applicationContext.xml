@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+    <context:property-placeholder location="classpath:application.properties"/>
+    
+    <bean id="scienceTeacher" class="com.forgyan.teacher.ScienceTeacher" scope="prototype">
+    		<constructor-arg ref="cricketCoach"/>
+    </bean>
+    
+    <bean id="mathTeacher" class="com.forgyan.teacher.MathTeacher">
+    		<constructor-arg ref="hockeyCoach"/>
+    </bean>
+    
+    <bean id="englishTeacher" class="com.forgyan.teacher.EnglishTeacher">
+    		<property name="coach" ref="hockeyCoach"/>
+    </bean>
+    
+    <bean id="socialTeacher" class="com.forgyan.teacher.SocialScienceTeacher">
+    		<property name="coach" ref="cricketCoach"/>
+    		<property name="name" value="${name}"/>
+    		<property name="qualification" value="${qualification}"/>
+    </bean>
+    
+    <bean id="initDestroyTeacher" class="com.forgyan.teacher.InItAndDestroyTeacher"
+    	init-method="preDo" destroy-method="postDo">
+    </bean>
+    
+    <bean id="hockeyCoach" class="com.forgyan.coach.HockeyCoach">
+    </bean>
+    
+    <bean id="cricketCoach" class="com.forgyan.coach.CricketCoach">
+    </bean>
+    
+    
+    
+    
+    
+    <!-- Logging Bean -->
+    
+   <!--  
+	   <bean id="myLoggerConfig" class="com.forgyan.logging.MyLoggerConfig" init-method="initLogger">
+	    	<property name="rootLoggerLevel" value="FINE" />
+	    	<property name="printedLoggerLevel" value="FINE"/>
+	    </bean> 
+    -->
+    
+</beans>
+
+
+
+
+
