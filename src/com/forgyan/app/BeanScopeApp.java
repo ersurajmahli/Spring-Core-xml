@@ -8,6 +8,7 @@ public class BeanScopeApp {
 
 	public static void main(String[] args) {
 		// load the Spring configuration
+		
 		ClassPathXmlApplicationContext context = 
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		
